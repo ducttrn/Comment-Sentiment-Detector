@@ -5,12 +5,10 @@ from time import time
 import re
 import string
 import pandas as pd
-
-from load_data import load_dataset
+import pickle
 
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
-import pickle
 
 PATTERN = r'(test_[0-9]{1,6}\n\"(.|\n)*?\")'
 

@@ -7,8 +7,9 @@ from sklearn.linear_model import LogisticRegression
 
 from load_data import load_dataset
 
-"""Train and save the model using training data"""
+
 def save_model(filename, clf):
+    """Train and save the model using training data"""
     pickle.dump(clf, open(filename, 'wb'))
 
 
