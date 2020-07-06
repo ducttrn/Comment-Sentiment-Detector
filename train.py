@@ -25,7 +25,7 @@ transformer = CountVectorizer()
 X_train = transformer.fit_transform(X_train)
 
 # Modeling using Logistic Regression -> estimator
-model = LogisticRegression()
+model = LogisticRegression(max_iter=1000)
 estimator = model.fit(X_train, y_train)
 t1 = time() - t0
 print("Train time: %0.3fs" % t1)
