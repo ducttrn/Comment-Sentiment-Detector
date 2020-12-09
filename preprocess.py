@@ -5,7 +5,7 @@ import re
 import string
 import pandas as pd
 
-PATTERN = r'(train_[0-9]{1,6}\n\"(.|\n)*?\"\n[0|1])'
+PATTERN = r"(train_[0-9]{1,6}\n\"(.|\n)*?\"\n[0|1])"
 
 
 def load_data(filename):
@@ -22,15 +22,14 @@ def load_data(filename):
         label = int(item.split("\n")[-1])
         text = item.split("\n")[1:-1]
         text = " ".join([i for sublist in text for i in sublist.split(" ")]).lower()
-        text = text.translate(str.maketrans('', '', string.punctuation))
+        text = text.translate(str.maketrans("", "", string.punctuation))
         if len(text) > 2:
-            row['text'] = text
-            row['label'] = label
+            row["text"] = text
+            row["label"] = label
             data.append(row)
     df = pd.DataFrame(data)
     excel_file = join(os.getcwd(), "data", "corpus", filename.replace("crash", "xlsx"))
     df.to_excel(excel_file, index=None)
 
 
-load_data('train.crash')
-print(0)
+load_data("train.crash")

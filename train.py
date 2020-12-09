@@ -10,7 +10,7 @@ from load_data import load_dataset
 
 def save_model(filename, clf):
     """Train and save the model using training data"""
-    pickle.dump(clf, open(filename, 'wb'))
+    pickle.dump(clf, open(filename, "wb"))
 
 
 train_path = join(dirname(__file__), "data", "corpus", "train.xlsx")

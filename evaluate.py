@@ -10,7 +10,7 @@ import pickle
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
 
-PATTERN = r'(test_[0-9]{1,6}\n\"(.|\n)*?\")'
+PATTERN = r"(test_[0-9]{1,6}\n\"(.|\n)*?\")"
 
 t0 = time()
 x_transformer_file = open(join(cwd, "snapshots", "x_transformer.pkl"), "rb")
@@ -31,16 +31,16 @@ for item in content_list:
     idx = item.split("\n")[0]
     texts = item.split("\n")[1:]
     text = " ".join([i for sublist in texts for i in sublist.split(" ")]).lower()
-    text = text.translate(str.maketrans('', '', string.punctuation))
+    text = text.translate(str.maketrans("", "", string.punctuation))
     if len(text) > 2:
-        row['id'] = idx
+        row["id"] = idx
         x_tran = x_transformer.transform([text])
         y = estimator.predict(x_tran)
-        row['label'] = str(y[0])
+        row["label"] = str(y[0])
         data.append(row)
     else:
-        row['id'] = idx
-        row['label'] = "0"
+        row["id"] = idx
+        row["label"] = "0"
         data.append(row)
 df = pd.DataFrame(data)
 submission_file = join(os.getcwd(), "data", "corpus", "submission.csv")
