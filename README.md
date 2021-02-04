@@ -30,14 +30,14 @@ pip install -r requirements.txt
 Run the program's phases in order of data preprocessing, model training, and result evaluation by running these following commands in your terminal, one after another:
 - Data Preprocessing
 ```
-$ python preprocess.py
+$ python src/preprocess.py
 ```
 - Model Training
 ```
-$ python train.py
+$ python src/train.py
 ```
 - Result Evaluation
 ```
-$ python evaluate.py
+$ python src/evaluate.py
 ```
 A detailed report about the model's accuracy will be returned in your terminal.

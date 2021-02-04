@@ -6,7 +6,7 @@ from time import time
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.linear_model import LogisticRegression
 
-from load_data import load_dataset
+from src.helpers import load_dataset
 
 
 def save_model(filename, clf):
@@ -16,8 +16,8 @@ def save_model(filename, clf):
 
 def train():
     """Train a model based on training data"""
-    train_path = join(dirname(__file__), "data", "corpus", "train.xlsx")
-    serialization_dir = join(dirname(__file__), "snapshots")
+    train_path = join(dirname(__file__), "../data", "corpus", "train.xlsx")
+    serialization_dir = join(dirname(__file__), "../snapshots")
     logging.info("Load data...")
     X_train, y_train = load_dataset(train_path)
 

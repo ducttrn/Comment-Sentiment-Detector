@@ -10,7 +10,7 @@ PATTERN = r"(train_[0-9]{1,6}\n\"(.|\n)*?\"\n[0|1])"
 def preprocess(filename):
     """Load a text database into an excel file with 2 columns, text and label for binary classification"""
     # Load the train dataset
-    file = join(os.getcwd(), "data", filename)
+    file = join(os.getcwd(), "../data", filename)
 
     with open(file, encoding="utf-8") as infile:
         content = infile.read()
@@ -32,7 +32,9 @@ def preprocess(filename):
             data.append(row)
 
     df = pd.DataFrame(data)
-    excel_file = join(os.getcwd(), "data", "corpus", filename.replace("crash", "xlsx"))
+    excel_file = join(
+        os.getcwd(), "../data", "corpus", filename.replace("crash", "xlsx")
+    )
     df.to_excel(excel_file, index=None)
 
 
