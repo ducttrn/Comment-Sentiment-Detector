@@ -1,12 +1,11 @@
 # Comment Sentiment Analysis
-Categorize whether a comment on a product is positive or negative.
-Use supervised machine learning model to classify the sentiment of a comment.
+Categorize whether a comment on a product is positive or negative using supervised learning.
 Use Python with the support of scikit-learn, numpy, and pandas.
-The data for this project is in Vietnamese, but the code can be reused for other languages as well.
+- Note: The data for this project is in Vietnamese, but the code can be reused for other languages as well.
 
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your computer:
-- Python 3.0 or later.
+- Python 3.6 or later.
 You can download different versions of Python here:
 http://www.python.org/getit/
 - `pip`
