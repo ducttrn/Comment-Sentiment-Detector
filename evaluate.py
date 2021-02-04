@@ -4,6 +4,7 @@ import re
 import string
 import pandas as pd
 import pickle
+import logging
 from os.path import dirname, abspath, join
 from time import time
 
@@ -21,7 +22,7 @@ def evaluate():
     estimator_file = open(join(cwd, "snapshots", "model.pkl"), "rb")
     estimator = pickle.load(estimator_file)
     duration = time() - t0
-    print("Load model time: %0.3fs" % duration)
+    logging.info("Load model time: %0.3fs" % duration)
 
     file = join(os.getcwd(), "data", "test.crash")
     with open(file, encoding="utf-8") as infile:
