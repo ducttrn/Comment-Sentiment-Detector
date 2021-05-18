@@ -1,8 +1,9 @@
 # Comment Sentiment Analysis
+[![Build Status](https://travis-ci.com/billtrn/Comment-Sentiment-Analysis.svg?branch=master)](https://travis-ci.com/billtrn/Comment-Sentiment-Analysis)
 [![Coverage Status](https://coveralls.io/repos/github/billtrn/Comment-Sentiment-Analysis/badge.svg?branch=master)](https://coveralls.io/github/billtrn/Comment-Sentiment-Analysis?branch=master)
+
 Categorize whether a comment on a product is positive or negative using supervised learning.
 Use Python with the support of scikit-learn, numpy, and pandas.
-- Note: The data for this project is in Vietnamese, but the code can be reused for other languages as well.
 
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your computer:
@@ -26,19 +27,3 @@ To install all the required libraries and packages for this project, run this co
 ```
 pip install -r requirements.txt
 ```
-
-## Run the program
-Run the program's phases in order of data preprocessing, model training, and result evaluation by running these following commands in your terminal, one after another:
-- Data Preprocessing
-```
-$ python src/preprocess.py
-```
-- Model Training
-```
-$ python src/train.py
-```
-- Result Evaluation
-```
-$ python src/evaluate.py
-```
-A detailed report about the model's accuracy will be returned in your terminal.
