@@ -13,13 +13,19 @@ sys.path.append(dirname(dirname(cwd)))
 PATTERN = r"(test_[0-9]{1,6}\n\"(.|\n)*?\")"
 
 
+class Prediction:
+    def __init__(self, sentiment, confidence):
+        self.sentiment = sentiment
+        self.confidence = confidence
+
+
 def _load_model():
     text_transformer_file = open(
-        join(cwd, "../snapshots", "text_transformer.pkl"), "rb"
+        join(cwd, "../../models", "text_transformer.pkl"), "rb"
     )
     text_transformer = pickle.load(text_transformer_file)
 
-    estimator_file = open(join(cwd, "../snapshots", "model.pkl"), "rb")
+    estimator_file = open(join(cwd, "../../models", "model.pkl"), "rb")
     estimator = pickle.load(estimator_file)
 
     return text_transformer, estimator
@@ -29,7 +35,7 @@ def evaluate_file():
     """Evaluate the accuracy of the trained model"""
     text_transformer, estimator = _load_model()
 
-    file = join(os.getcwd(), "../data", "test.crash")
+    file = join(os.getcwd(), "../../data", "test.crash")
     with open(file, encoding="utf-8") as infile:
         content = infile.read()
 
@@ -57,17 +63,21 @@ def evaluate_file():
             data.append(row)
 
     df = pd.DataFrame(data)
-    submission_file = join(os.getcwd(), "../data", "corpus", "submission.csv")
-    df.to_csv(submission_file, index=False)
+    result_file = join(os.getcwd(), "../../data", "corpus", "result.csv")
+    df.to_csv(result_file, index=False)
 
 
-def evaluate_text(text: str):
+def evaluate_text(text: str) -> Prediction:
     text_transformer, estimator = _load_model()
     transformed_text = text_transformer.transform([text])
-    predicted_label = estimator.predict(transformed_text)
-    return predicted_label[0]
+
+    prediction = estimator.predict_proba(transformed_text)[0]
+    predicted_label = 0 if prediction[0] >= prediction[1] else 1
+    confidence = max(prediction)
+
+    return Prediction(sentiment=predicted_label, confidence=confidence)
 
 
 if __name__ == "__main__":
     evaluate_file()
-    evaluate_text("Hàng này kém quá")
+    evaluate_text("Kém quá")

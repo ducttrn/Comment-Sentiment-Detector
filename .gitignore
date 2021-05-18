@@ -1,4 +1,13 @@
-.idea/
-__pycache__/
-env/
-venv/
+venv
+venv/**
+.idea
+.idea/**
+.pytest_cache
+.pytest_cache/**
+*.pyc
+**/*.pyc
+**/**/*.pyc
+.coveragerc
+.DS_Store
+**/.DS_Store
+cov_html

@@ -23,8 +23,8 @@ def _save_model(filename, clf):
 
 def train():
     """Train a model based on training data"""
-    train_path = join(dirname(__file__), "../data", "corpus", "train.xlsx")
-    serialization_dir = join(dirname(__file__), "../snapshots")
+    train_path = join(dirname(__file__), "../../data", "corpus", "train.xlsx")
+    serialization_dir = join(dirname(__file__), "../../models")
     logging.info("Load data...")
     texts, labels = _load_dataset(train_path)
 
