@@ -1,4 +1,5 @@
 # Comment Sentiment Analysis
+[![Coverage Status](https://coveralls.io/repos/github/billtrn/Comment-Sentiment-Analysis/badge.svg?branch=master)](https://coveralls.io/github/billtrn/Comment-Sentiment-Analysis?branch=master)
 Categorize whether a comment on a product is positive or negative using supervised learning.
 Use Python with the support of scikit-learn, numpy, and pandas.
 - Note: The data for this project is in Vietnamese, but the code can be reused for other languages as well.
