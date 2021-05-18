@@ -1,4 +1,3 @@
-import os
 import re
 import string
 from os.path import join
@@ -8,12 +7,10 @@ import pandas as pd
 PATTERN = r"(train_[0-9]{1,6}\n\"(.|\n)*?\"\n[0|1])"
 
 
-def preprocess(filename):
+def preprocess(input_file_path, output_directory):
     """Load a text database into an excel file with 2 columns, text and label for binary classification"""
     # Load the train dataset
-    file = join(os.getcwd(), "../../data", filename)
-
-    with open(file, encoding="utf-8") as infile:
+    with open(input_file_path, encoding="utf-8") as infile:
         content = infile.read()
 
     content_list = re.findall(PATTERN, content)
@@ -28,12 +25,10 @@ def preprocess(filename):
         text = text.translate(str.maketrans("", "", string.punctuation))
 
         if len(text) > 2:
-            row["text"] = text
+            row["text"] = text.strip()
             row["label"] = label
             data.append(row)
 
     df = pd.DataFrame(data)
-    excel_file = join(
-        os.getcwd(), "../../data", "corpus", filename.replace("crash", "xlsx")
-    )
-    df.to_excel(excel_file, index=None)
+    preprocessed_data = join(output_directory, "train.csv")
+    df.to_csv(preprocessed_data, index=False)
