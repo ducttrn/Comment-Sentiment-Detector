@@ -1,3 +1,4 @@
+import json
 import os
 import pickle
 import re
@@ -6,6 +7,8 @@ import sys
 from os.path import dirname, abspath, join
 
 import pandas as pd
+
+from main import memcache_client, config
 
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
@@ -76,11 +79,21 @@ def evaluate_file(
 
 
 def evaluate_text(text: str, model_path=None, transformer_path=None) -> Prediction:
+    cached_value = memcache_client.get(text)
+    if cached_value:
+        return Prediction(**json.loads(cached_value))
+
     text_transformer, estimator = _load_model(model_path, transformer_path)
     transformed_text = text_transformer.transform([text])
 
     prediction = estimator.predict_proba(transformed_text)[0]
     predicted_label = 0 if prediction[0] >= prediction[1] else 1
     confidence = round(max(prediction), 4)
+
+    memcache_client.set(
+        key=text,
+        val=json.dumps({"sentiment": predicted_label, "confidence": confidence}),
+        time=config.CACHE_TIME_OUT,
+    )
 
     return Prediction(sentiment=predicted_label, confidence=confidence)
