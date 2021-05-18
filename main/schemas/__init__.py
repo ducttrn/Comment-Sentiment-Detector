@@ -6,5 +6,5 @@ class BaseSchema(Schema):
     def strip_input(self, data, **__):
         for key, value in data.items():
             if isinstance(value, str):
-                data[key] = data[key].strip()
+                data[key] = value.strip()
         return data
