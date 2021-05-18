@@ -73,11 +73,6 @@ def evaluate_text(text: str) -> Prediction:
 
     prediction = estimator.predict_proba(transformed_text)[0]
     predicted_label = 0 if prediction[0] >= prediction[1] else 1
-    confidence = max(prediction)
+    confidence = round(max(prediction), 4)
 
     return Prediction(sentiment=predicted_label, confidence=confidence)
-
-
-if __name__ == "__main__":
-    evaluate_file()
-    evaluate_text("Kém quá")

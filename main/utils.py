@@ -3,6 +3,8 @@ from functools import wraps
 from flask import request
 from marshmallow import ValidationError
 
+from main import BadRequestError
+
 
 def get_request_args():
     if request.method == "GET":
@@ -23,7 +25,7 @@ def parse_args_with(schema):
             try:
                 parsed_args = schema.load(request_args)
             except ValidationError as exc:
-                raise Exception(exc.messages)
+                raise BadRequestError(exc.messages)
             kwargs["args"] = parsed_args
             return f(*args, **kwargs)
 

@@ -1,1 +1,2 @@
-from prediction import *
+def init_routes():
+    from . import prediction

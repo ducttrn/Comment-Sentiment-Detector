@@ -37,7 +37,3 @@ def preprocess(filename):
         os.getcwd(), "../../data", "corpus", filename.replace("crash", "xlsx")
     )
     df.to_excel(excel_file, index=None)
-
-
-if __name__ == "__main__":
-    preprocess("train.crash")

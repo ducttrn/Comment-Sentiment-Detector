@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 
+from main.controllers import init_routes
 from main.errors import NotFoundError, InternalServerError, BadRequestError
 
 app = Flask(__name__)
+init_routes()
 
 
 # Errors handlers

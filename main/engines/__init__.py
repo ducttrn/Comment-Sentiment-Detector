@@ -1,3 +1,3 @@
-from evaluate import *
-from preprocess import *
-from train import *
+from .evaluate import *
+from .preprocess import *
+from .train import *

@@ -46,7 +46,3 @@ def train():
     _save_model(serialization_dir + "/model.pkl", estimator)
     t1 = time() - t0
     logging.info("Save model time: %0.3fs" % t1)
-
-
-if __name__ == "__main__":
-    train()
