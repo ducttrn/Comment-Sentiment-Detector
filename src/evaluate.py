@@ -1,8 +1,8 @@
-import sys
 import os
+import pickle
 import re
 import string
-import pickle
+import sys
 from os.path import dirname, abspath, join
 
 import pandas as pd
@@ -14,7 +14,9 @@ PATTERN = r"(test_[0-9]{1,6}\n\"(.|\n)*?\")"
 
 
 def _load_model():
-    text_transformer_file = open(join(cwd, "../snapshots", "text_transformer.pkl"), "rb")
+    text_transformer_file = open(
+        join(cwd, "../snapshots", "text_transformer.pkl"), "rb"
+    )
     text_transformer = pickle.load(text_transformer_file)
 
     estimator_file = open(join(cwd, "../snapshots", "model.pkl"), "rb")
@@ -44,9 +46,9 @@ def evaluate_file():
 
         if len(text) > 2:
             row["id"] = idx
-            x_tran = text_transformer.transform([text])
-            y = estimator.predict(x_tran)
-            row["label"] = str(y[0])
+            transformed_text = text_transformer.transform([text])
+            predicted_label = estimator.predict(transformed_text)
+            row["label"] = str(predicted_label[0])
             data.append(row)
 
         else:
@@ -60,8 +62,12 @@ def evaluate_file():
 
 
 def evaluate_text(text: str):
-    pass
+    text_transformer, estimator = _load_model()
+    transformed_text = text_transformer.transform([text])
+    predicted_label = estimator.predict(transformed_text)
+    return predicted_label[0]
 
 
 if __name__ == "__main__":
     evaluate_file()
+    evaluate_text("Hàng này kém quá")
