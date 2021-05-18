@@ -19,24 +19,31 @@ class Prediction:
         self.confidence = confidence
 
 
-def _load_model():
-    text_transformer_file = open(
-        join(cwd, "../../models", "text_transformer.pkl"), "rb"
-    )
-    text_transformer = pickle.load(text_transformer_file)
+def _load_model(model_path=None, transformer_path=None):
+    if not model_path:
+        model_path = "models/model.pkl"
+    if not transformer_path:
+        transformer_path = "models/text_transformer.pkl"
 
-    estimator_file = open(join(cwd, "../../models", "model.pkl"), "rb")
-    estimator = pickle.load(estimator_file)
+    with open(transformer_path, "rb") as text_transformer_file:
+        text_transformer = pickle.load(text_transformer_file)
+
+    with open(model_path, "rb") as estimator_file:
+        estimator = pickle.load(estimator_file)
 
     return text_transformer, estimator
 
 
-def evaluate_file():
+def evaluate_file(
+    model_path=None, transformer_path=None, test_data_path=None, output_directory=None
+):
     """Evaluate the accuracy of the trained model"""
-    text_transformer, estimator = _load_model()
+    text_transformer, estimator = _load_model(model_path, transformer_path)
 
-    file = join(os.getcwd(), "../../data", "test.crash")
-    with open(file, encoding="utf-8") as infile:
+    if not test_data_path:
+        test_data_path = "data/test.crash"
+
+    with open(test_data_path, encoding="utf-8") as infile:
         content = infile.read()
 
     content_list = re.findall(PATTERN, content)
@@ -63,12 +70,13 @@ def evaluate_file():
             data.append(row)
 
     df = pd.DataFrame(data)
-    result_file = join(os.getcwd(), "../../data", "corpus", "result.csv")
-    df.to_csv(result_file, index=False)
+    if not output_directory:
+        output_directory = "data/corpus"
+    df.to_csv(output_directory + "/result.csv", index=False)
 
 
-def evaluate_text(text: str) -> Prediction:
-    text_transformer, estimator = _load_model()
+def evaluate_text(text: str, model_path=None, transformer_path=None) -> Prediction:
+    text_transformer, estimator = _load_model(model_path, transformer_path)
     transformed_text = text_transformer.transform([text])
 
     prediction = estimator.predict_proba(transformed_text)[0]
