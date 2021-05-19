@@ -1,7 +1,11 @@
 import json
 
+from main.engines.translate import google_translator
 
-def test_sentiment_prediction(client):
+
+def test_sentiment_prediction(client, mocker):
+    mocker.patch.object(google_translator, "translate", return_value="Kém quá")
+
     data = {"text": "Kém quá"}
 
     response = client.post(
