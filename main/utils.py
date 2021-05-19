@@ -3,7 +3,7 @@ from functools import wraps
 from flask import request
 from marshmallow import ValidationError
 
-from main import BadRequestError
+from main.errors import BadRequestError
 
 
 def get_request_args():

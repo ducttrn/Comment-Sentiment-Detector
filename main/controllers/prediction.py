@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from main import app
+from main.app import app
 from main.schemas.prediction import PredictSentimentSchema, PredictionResultSchema
 from main.utils import parse_args_with
 from main.engines import evaluate_text

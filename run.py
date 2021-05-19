@@ -1,5 +1,5 @@
 import os
-from main import app
+from main.app import app
 
 # Retrieve environment configurations
 _host = str(os.getenv("HOST", "0.0.0.0"))

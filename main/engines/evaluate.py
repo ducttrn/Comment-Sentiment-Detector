@@ -1,14 +1,14 @@
 import json
-import os
 import pickle
 import re
 import string
 import sys
-from os.path import dirname, abspath, join
+from os.path import dirname, abspath
 
 import pandas as pd
 
-from main import memcache_client, config
+from main.configs import config
+from main.memcache import memcache_client
 
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
@@ -92,7 +92,7 @@ def evaluate_text(text: str, model_path=None, transformer_path=None) -> Predicti
 
     memcache_client.set(
         key=text,
-        val=json.dumps({"sentiment": predicted_label, "confidence": confidence}),
+        value=json.dumps({"sentiment": predicted_label, "confidence": confidence}),
         time=config.CACHE_TIME_OUT,
     )
 
