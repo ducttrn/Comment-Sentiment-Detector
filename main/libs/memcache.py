@@ -1,4 +1,4 @@
-import pickle
+import json
 
 from pymemcache.client.base import Client
 
@@ -11,7 +11,7 @@ class MemcacheClient(Client):
 
     @staticmethod
     def _make_key(key):
-        return f"{config.CACHE_PREFIX}-{pickle.dumps(key.replace(' ', '$'))}"
+        return f"{config.CACHE_PREFIX}-{json.dumps(key.replace(' ', '$'))}"
 
     def set(self, key, value, time=0, *args, **kwargs):
         super().set(key=self._make_key(key), value=value, expire=time, *args, **kwargs)
