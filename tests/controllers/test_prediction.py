@@ -15,7 +15,6 @@ def test_sentiment_prediction(client, mocker):
     )
 
     assert response.status_code == 200
-    assert response.json["sentiment"] == 1
 
     data = {}
 
