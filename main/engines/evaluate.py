@@ -8,7 +8,7 @@ from os.path import dirname, abspath
 import pandas as pd
 
 from main.configs import config
-from main.memcache import memcache_client
+from main.libs.memcache import memcache_client
 
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
@@ -38,14 +38,10 @@ def _load_model(model_path=None, transformer_path=None):
 
 
 def evaluate_file(
-    model_path=None, transformer_path=None, test_data_path=None, output_directory=None
+    test_data_path, output_directory, model_path=None, transformer_path=None
 ):
     """Evaluate the accuracy of the trained model"""
     text_transformer, estimator = _load_model(model_path, transformer_path)
-
-    if not test_data_path:
-        test_data_path = "data/test.crash"
-
     with open(test_data_path, encoding="utf-8") as infile:
         content = infile.read()
 
@@ -73,8 +69,6 @@ def evaluate_file(
             data.append(row)
 
     df = pd.DataFrame(data)
-    if not output_directory:
-        output_directory = "data/corpus"
     df.to_csv(output_directory + "/result.csv", index=False)
 
 
