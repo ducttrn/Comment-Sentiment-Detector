@@ -5,6 +5,8 @@
 
 A web application powered by Machine Learning capable of determining the sentiment of a comment.
 
+![interface](https://github.com/billtrn/Comment-Sentiment-Detector/blob/master/img/interface.png?raw=true)
+
 ## 📚 Table of contents
 
 - [Technical stack](#-technical-stack)
