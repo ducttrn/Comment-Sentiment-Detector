@@ -8,6 +8,7 @@ from os.path import abspath, dirname
 import pandas as pd
 
 from main.configs import config
+from main.engines.translate import translate_to_training_language
 from main.libs.memcache import memcache_client
 
 cwd = dirname(abspath(__file__))
@@ -91,3 +92,10 @@ def evaluate_text(text: str, model_path=None, transformer_path=None) -> Predicti
     )
 
     return Prediction(sentiment=predicted_label, confidence=confidence)
+
+
+def evaluate_translated_text(text):
+    translated_text = translate_to_training_language(text)
+    prediction = evaluate_text(translated_text)
+
+    return prediction

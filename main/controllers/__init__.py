@@ -1,2 +1,2 @@
 def init_routes():
-    from . import prediction
+    from . import api, index, prediction

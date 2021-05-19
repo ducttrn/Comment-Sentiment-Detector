@@ -5,7 +5,7 @@ from main.configs import config
 from main.controllers import init_routes
 from main.errors import InternalServerError, NotFoundError
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 app.config.from_object(config)
 init_routes()
 

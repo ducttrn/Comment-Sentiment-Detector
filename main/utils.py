@@ -32,3 +32,25 @@ def parse_args_with(schema):
         return decorated_function
 
     return parse_args_with_decorator
+
+
+def parse_form_with(schema):
+    """
+    This decorator can be used to parse form inputs of a request using a Marshmallow schema. If there is any validation
+    error, a BadRequest exception will be raised along with the error details.
+    """
+
+    def parse_args_with_decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            request_args = request.form.to_dict()
+            try:
+                parsed_args = schema.load(request_args)
+            except ValidationError as exc:
+                raise BadRequestError(exc.messages)
+            kwargs["args"] = parsed_args
+            return f(*args, **kwargs)
+
+        return decorated_function
+
+    return parse_args_with_decorator

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <p class="text-center" style="font-size: xx-large; padding-top: 5vw">Insert your text to perform sentiment detection</p>
+    <form action="/sentiments/predict" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" style="width: 40vw; margin-top: 0.5vw" name="text" placeholder="This is wonderful!" type="text">
+        </div>
+        <button class="btn btn-primary" style="margin-top: 0.25vw; width: 8vw" type="submit">Evaluate</button>
+    </form>
+    {% if sentiment and confidence %}
+        {% if sentiment == "Negative" %}
+            <p style="margin-top: 5vw; font-size: x-large">Sentiment: <span style="color: red">{{sentiment}}</span></p>
+        {% else %}
+            <p style="margin-top: 5vw; font-size: x-large">Sentiment: <span style="color: green">{{sentiment}}</span></p>
+        {% endif %}
+        <p style="font-size: x-large">Confidence: {{confidence}}</p>
+    {% endif %}
+{% endblock %}
