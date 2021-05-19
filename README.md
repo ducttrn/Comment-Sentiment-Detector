@@ -58,7 +58,7 @@ Comment Sentiment Detector can be used either as a web application, APIs, or scr
 $ python run.py
 ```
 The web application can be found at http://localhost:5000/
-- APIs: send a `POST` request to `/sentiments/predict` to evaluate sentiment of a text, example request body:
+- APIs: APIs for backend usage can be found [here](main/controllers/api).For example, send a `POST` request to `/api/v1/sentiments/predict` to evaluate sentiment of a text, example request body:
 ```json
 {
   "text": "example"
@@ -70,7 +70,7 @@ A JSON object with the detected sentiment and confidence score will be returned.
 
 ## 📋 Todo
 - Implement APIs for preprocessing data and training model
-
+- Provide detail API specs for backend usage
 ## 📄 License
 
 [MIT](./LICENSE)
