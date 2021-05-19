@@ -3,7 +3,7 @@ import pickle
 import re
 import string
 import sys
-from os.path import dirname, abspath
+from os.path import abspath, dirname
 
 import pandas as pd
 

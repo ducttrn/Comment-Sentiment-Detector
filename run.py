@@ -1,4 +1,5 @@
 import os
+
 from main.app import app
 
 # Retrieve environment configurations

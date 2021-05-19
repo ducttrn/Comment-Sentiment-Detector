@@ -1,6 +1,6 @@
 import os
 
-from main.engines import evaluate_text, evaluate_file
+from main.engines import evaluate_file, evaluate_text
 
 
 def test_evaluate_text():

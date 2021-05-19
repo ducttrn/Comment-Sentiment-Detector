@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 
 from main import errors
 from main.configs import config
 from main.controllers import init_routes
-from main.errors import NotFoundError, InternalServerError
+from main.errors import InternalServerError, NotFoundError
 
 app = Flask(__name__)
 app.config.from_object(config)
