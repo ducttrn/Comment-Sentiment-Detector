@@ -51,14 +51,15 @@ $ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 🤟 Usage
-Comment Sentiment Detector can be used either as a web application, APIs, or scripts.
-- Run the application:
+### 3. Run the application:
 ```
 $ python run.py
 ```
-The web application can be found at http://localhost:5000/
-- APIs: APIs for backend usage can be found [here](main/controllers/api).For example, send a `POST` request to `/api/v1/sentiments/predict` to evaluate sentiment of a text, example request body:
+
+## 🤟 Usage
+Comment Sentiment Detector can be used either as a web application, APIs, or scripts.
+- Web application: The application can be found at http://localhost:5000/
+- APIs: APIs for backend usage can be found [here](main/controllers/api). For example, send a `POST` request to `/api/v1/sentiments/predict` to evaluate sentiment of a text, example request body:
 ```json
 {
   "text": "example"
