@@ -7,13 +7,13 @@ A web application powered by Machine Learning capable of determining the sentime
 
 ## 📚 Table of contents
 
-- [Technical stack](#technical-stack)
-  - [Backend](#backend)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Todo](#todo)
-- [License](#license)
+- [Technical stack](#-technical-stack)
+  - [Backend](#-backend)
+- [Features](#-features)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Todo](#-todo)
+- [License](#-license)
 
 ## 🛠 Technical stack
 ### ⚙ Backend
@@ -49,7 +49,7 @@ $ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## 🤟 Usage
 Comment Sentiment Detector can be used either as a web application, APIs, or scripts.
 - Run the application:
 ```
