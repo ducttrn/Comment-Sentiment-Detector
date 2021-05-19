@@ -10,6 +10,7 @@ A web application powered by Machine Learning capable of determining the sentime
 ## 📚 Table of contents
 
 - [Technical stack](#-technical-stack)
+  - [Frontend](#-frontend)
   - [Backend](#-backend)
 - [Features](#-features)
 - [Installation](#-installation)
@@ -18,6 +19,8 @@ A web application powered by Machine Learning capable of determining the sentime
 - [License](#-license)
 
 ## 🛠 Technical stack
+### 🖍️ Frontend
+- Framework: [Bootstrap](https://getbootstrap.com/)
 ### ⚙ Backend
 - Programming language(s): [Python](https://www.python.org/)
 - App framework: [Flask](http://flask.palletsprojects.com/en/1.1.x/)
