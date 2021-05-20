@@ -1,4 +1,5 @@
 import json
+import logging
 import pickle
 import re
 import string
@@ -95,7 +96,12 @@ def evaluate_text(text: str, model_path=None, transformer_path=None) -> Predicti
 
 
 def evaluate_translated_text(text):
-    translated_text = translate_to_training_language(text)
+    try:
+        translated_text = translate_to_training_language(text)
+    except Exception as e:
+        logging.exception(e)
+        translated_text = text
+
     prediction = evaluate_text(translated_text)
 
     return prediction
