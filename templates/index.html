@@ -17,7 +17,7 @@
     <p class="text-center" style="font-size: xx-large; padding-top: 5vw">Insert your text to perform sentiment detection</p>
     <form action="/sentiments/predict" method="post">
         <div class="form-group">
-            <input autocomplete="off" id="textSend" onkeyup="success()" autofocus class="form-control" style="width: 40vw; margin-top: 0.5vw" name="text" placeholder="This is wonderful!" type="text">
+            <input autocomplete="off" id="textSend" maxlength="128" onkeyup="success()" autofocus class="form-control" style="width: 40vw; margin-top: 0.5vw" name="text" placeholder="This is wonderful!" type="text">
         </div>
         <button onclick="saveToSessionStorage()" class="btn btn-primary" id="button" style="margin-top: 0.25vw; width: 8vw" type="submit" disabled>Evaluate</button>
     </form>
