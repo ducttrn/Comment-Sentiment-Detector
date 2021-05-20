@@ -1,13 +1,30 @@
 {% extends "layout.html" %}
 
 {% block main %}
+    <script type="text/javascript">
+        function success() {
+	        document.getElementById('button').disabled = document.getElementById("textSend").value.trim() === "";
+        }
+        function saveToSessionStorage() {
+            let input = document.getElementById('textSend').value;
+            sessionStorage.setItem('text', input);
+        }
+        function setValue() {
+            document.getElementById("textSend").value = sessionStorage.getItem('text');
+        }
+    </script>
+
     <p class="text-center" style="font-size: xx-large; padding-top: 5vw">Insert your text to perform sentiment detection</p>
     <form action="/sentiments/predict" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" style="width: 40vw; margin-top: 0.5vw" name="text" placeholder="This is wonderful!" type="text">
+            <input autocomplete="off" id="textSend" onkeyup="success()" autofocus class="form-control" style="width: 40vw; margin-top: 0.5vw" name="text" placeholder="This is wonderful!" type="text">
         </div>
-        <button class="btn btn-primary" style="margin-top: 0.25vw; width: 8vw" type="submit">Evaluate</button>
+        <button onclick="saveToSessionStorage()" class="btn btn-primary" id="button" style="margin-top: 0.25vw; width: 8vw" type="submit" disabled>Evaluate</button>
     </form>
+    <script>
+        setValue()
+        success()
+    </script>
     {% if sentiment and confidence %}
         {% if sentiment == "Negative" %}
             <p style="margin-top: 5vw; font-size: x-large">Sentiment: <span style="color: red">{{sentiment}}</span></p>
