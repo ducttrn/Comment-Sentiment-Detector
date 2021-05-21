@@ -10,3 +10,4 @@ pymemcache==3.4.3
 marshmallow==3.0.0rc5
 langdetect==1.0.9
 google-trans-new==1.1.9
+requests==2.25.1

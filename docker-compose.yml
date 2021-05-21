@@ -1,0 +1,23 @@
+version: '2'
+services:
+  sentiment-detector:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: sentiment-detector
+    environment:
+      - PORT=5000
+      - MEMCACHED_HOST=memcached
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - memcached
+
+
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+    restart: always
+    command: ["memcached"]
