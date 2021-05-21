@@ -7,9 +7,14 @@ import pandas as pd
 PATTERN = r"(train_[0-9]{1,6}\n\"(.|\n)*?\"\n[0|1])"
 
 
-def preprocess(input_file_path, output_directory):
-    """Load a text database into an excel file with 2 columns, text and label for binary classification"""
-    # Load the train dataset
+def preprocess(input_file_path: str, output_directory: str) -> None:
+    """
+    Preprocess and load text records into a CSV file with 2 columns
+    -  text
+    -  label
+    for binary classification
+    """
+
     with open(input_file_path, encoding="utf-8") as infile:
         content = infile.read()
 

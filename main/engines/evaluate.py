@@ -24,7 +24,7 @@ class Prediction:
         self.confidence = confidence
 
 
-def _load_model(model_path=None, transformer_path=None):
+def _load_model(model_path: str = None, transformer_path: str = None):
     if not model_path:
         model_path = "models/model.pkl"
     if not transformer_path:
@@ -40,9 +40,14 @@ def _load_model(model_path=None, transformer_path=None):
 
 
 def evaluate_file(
-    test_data_path, output_directory, model_path=None, transformer_path=None
-):
-    """Evaluate the accuracy of the trained model"""
+    test_data_path: str,
+    output_directory: str,
+    model_path: str = None,
+    transformer_path: str = None,
+) -> None:
+    """
+    Evaluate the sentiments of texts in a file
+    """
     text_transformer, estimator = _load_model(model_path, transformer_path)
     with open(test_data_path, encoding="utf-8") as infile:
         content = infile.read()
@@ -74,7 +79,12 @@ def evaluate_file(
     df.to_csv(output_directory + "/result.csv", index=False)
 
 
-def evaluate_text(text: str, model_path=None, transformer_path=None) -> Prediction:
+def evaluate_text(
+    text: str, model_path: str = None, transformer_path: str = None
+) -> Prediction:
+    """
+    Evaluate the sentiment of a text
+    """
     cached_value = memcache_client.get(text)
     if cached_value:
         return Prediction(**json.loads(cached_value))
@@ -95,7 +105,10 @@ def evaluate_text(text: str, model_path=None, transformer_path=None) -> Predicti
     return Prediction(sentiment=predicted_label, confidence=confidence)
 
 
-def evaluate_translated_text(text):
+def evaluate_translated_text(text: str) -> Prediction:
+    """
+    Translate and evaluate the sentiment of a text
+    """
     try:
         translated_text = translate_to_training_language(text)
     except Exception as e:

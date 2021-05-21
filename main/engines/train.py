@@ -6,7 +6,6 @@ from sklearn.linear_model import LogisticRegression
 
 
 def _load_dataset(path: str):
-    """Method to load data from an Excel file to DataFrame format"""
     df = pd.read_csv(path)
     texts = list(df["text"])
     labels = df.drop("text", 1)
@@ -14,12 +13,13 @@ def _load_dataset(path: str):
 
 
 def _save_model(filepath, clf):
-    """Save the model as a pickle file"""
     pickle.dump(clf, open(filepath, "wb"))
 
 
-def train(training_data_path, model_directory):
-    """Train a model based on training data"""
+def train(training_data_path: str, model_directory: str) -> None:
+    """
+    Train a model based on training data
+    """
     texts, labels = _load_dataset(training_data_path)
 
     # Go through BOW to find the weight of each word
