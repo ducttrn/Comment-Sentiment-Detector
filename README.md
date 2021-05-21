@@ -13,9 +13,10 @@ A web application powered by Machine Learning capable of determining the sentime
   - [Frontend](#-frontend)
   - [Backend](#-backend)
 - [Features](#-features)
+- [Run with Docker](#-run-with-docker)
 - [Installation](#-installation)
 - [Usage](#-usage)
-- [Todo](#-todo)
+- [Todo](#-to-do)
 - [License](#-license)
 
 ## 🛠 Technical stack
@@ -31,6 +32,12 @@ A web application powered by Machine Learning capable of determining the sentime
 - [Preprocess](main/engines/preprocess.py) a data file of natural language sentences
 - [Train](main/engines/train.py) a Machine Learning model based on the processed data
 - [Evaluate](main/engines/evaluate.py) natural language sentences to extract sentiments and confidence scores
+
+## 🐳 Run with Docker
+```
+$ docker-compose up
+```
+The application can be found at http://localhost:5000/
 
 
 ## ⬇ Installation
@@ -65,16 +72,16 @@ Comment Sentiment Detector can be used either as a web application, APIs, or scr
 - APIs: APIs for backend usage can be found [here](main/controllers/api). For example, send a `POST` request to `/api/v1/sentiments/predict` to evaluate sentiment of a text, example request body:
 ```json
 {
-  "text": "example"
+  "text": "this is awesome!"
 }
 ```
 A JSON object with the detected sentiment and confidence score will be returned.
 - Scripts: [preprocess data](main/engines/preprocess.py), [train model](main/engines/train.py)
 
 
-## 📋 Todo
+## 📋 To-do
 - Implement APIs for preprocessing data and training model
-- Provide detail API specs for backend usage
+- Provide detailed API specs for backend usage
 ## 📄 License
 
 [MIT](./LICENSE)
