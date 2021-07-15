@@ -5,6 +5,8 @@
 
 A web application powered by Machine Learning capable of determining the sentiment of a comment.
 
+[Live Demo](http://3.14.253.63:8080/)
+
 ![interface](https://github.com/billtrn/Comment-Sentiment-Detector/blob/master/img/interface.png?raw=true)
 
 ## 📚 Table of contents
