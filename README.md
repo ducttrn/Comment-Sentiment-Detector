@@ -30,6 +30,7 @@ Live Demo: [sentiment.billtrn.com](https://sentiment.billtrn.com)
 - Distributed memory caching: [Memcached](https://memcached.org/)
 - Data processing and Machine Learning: [sklearn](https://scikit-learn.org/), [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/)
 - HTTP Load Balancing: [NGINX](https://www.nginx.com/)
+- Deployment: [Docker](https://www.docker.com/), [AWS](https://aws.amazon.com/)
 
 
 ## 🚀 Features
