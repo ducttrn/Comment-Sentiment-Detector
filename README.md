@@ -29,6 +29,8 @@ Live Demo: [sentiment.billtrn.com](https://sentiment.billtrn.com)
 - App framework: [Flask](http://flask.palletsprojects.com/en/1.1.x/)
 - Distributed memory caching: [Memcached](https://memcached.org/)
 - Data processing and Machine Learning: [sklearn](https://scikit-learn.org/), [numpy](https://numpy.org/), [pandas](https://pandas.pydata.org/)
+- HTTP Load Balancing: [NGINX](https://www.nginx.com/)
+
 
 ## 🚀 Features
 - [Preprocess](main/engines/preprocess.py) a data file of natural language sentences
