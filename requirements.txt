@@ -2,7 +2,7 @@ pandas==1.0.5
 scikit-learn==0.23.1
 openpyxl==3.0.4
 xlrd==2.0.1
-Flask==1.0.3
+Flask==2.3.2
 pytest==6.2.4
 pytest-cov==2.7.1
 pytest-mock==3.6.1
