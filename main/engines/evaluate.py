@@ -85,8 +85,7 @@ def evaluate_text(
     """
     Evaluate the sentiment of a text
     """
-    cached_value = memcache_client.get(text)
-    if cached_value:
+    if cached_value := memcache_client.get(text):
         return Prediction(**json.loads(cached_value))
 
     text_transformer, estimator = _load_model(model_path, transformer_path)
