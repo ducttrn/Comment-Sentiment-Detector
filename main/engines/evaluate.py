@@ -1,6 +1,5 @@
 import json
 import logging
-import pickle
 import re
 import string
 import sys
@@ -11,6 +10,7 @@ import pandas as pd
 from main.configs import config
 from main.engines.translate import translate_to_training_language
 from main.libs.memcache import memcache_client
+import fickling
 
 cwd = dirname(abspath(__file__))
 sys.path.append(dirname(dirname(cwd)))
@@ -31,10 +31,10 @@ def _load_model(model_path: str = None, transformer_path: str = None):
         transformer_path = "models/text_transformer.pkl"
 
     with open(transformer_path, "rb") as text_transformer_file:
-        text_transformer = pickle.load(text_transformer_file)
+        text_transformer = fickling.load(text_transformer_file)
 
     with open(model_path, "rb") as estimator_file:
-        estimator = pickle.load(estimator_file)
+        estimator = fickling.load(estimator_file)
 
     return text_transformer, estimator
 
